@@ -47,4 +47,13 @@ public class WordSearchTest {
         assertFalse(actual);
     }
 
+    @Test
+    public void findWordInListCanFindWordsBackwards(){
+        WordSearch wordSearch = new WordSearch();
+        String[] listToFindWordIn = new String[]{"Z","X","T","A","C","R","Q"};
+        String wordToFind = "CAT";
+        Boolean actual = wordSearch.findWordInList(listToFindWordIn, wordToFind);
+        assertTrue(actual);
+    }
+
 }
