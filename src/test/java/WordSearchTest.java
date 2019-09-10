@@ -20,4 +20,12 @@ public class WordSearchTest {
         assertFalse(actual);
     }
 
+    @Test
+    public void findWordInListCanFindWordWhenListContainsExtraCharacters(){
+        WordSearch wordSearch = new WordSearch();
+        String[] listToFindWordIn = new String[]{"Z","X","C","A","T","R","Q"};
+        Boolean actual = wordSearch.findWordInList(listToFindWordIn, "CAT");
+        assertTrue(actual);
+    }
+
 }
