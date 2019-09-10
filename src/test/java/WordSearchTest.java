@@ -28,4 +28,14 @@ public class WordSearchTest {
         assertTrue(actual);
     }
 
+    @Test
+    public void findWordInListCanCatchNullInput(){
+        WordSearch wordSearch = new WordSearch();
+        String[] listToFindWordIn = new String[]{"Z","X","C","A","T","R","Q"};
+        Boolean actualNullList = wordSearch.findWordInList(new String[]{}, "CAT");
+        Boolean actualEmptyWord = wordSearch.findWordInList(listToFindWordIn, "");
+        assertFalse(actualNullList);
+        assertFalse(actualEmptyWord);
+    }
+
 }
