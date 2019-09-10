@@ -38,4 +38,13 @@ public class WordSearchTest {
         assertFalse(actualEmptyWord);
     }
 
+    @Test
+    public void findWordInListCanCatchWordLongerThanList(){
+        WordSearch wordSearch = new WordSearch();
+        String[] listToFindWordIn = new String[]{"Z","X","C","A","T","R","Q"};
+        String wordToFind = "LENGTHIER";
+        Boolean actual = wordSearch.findWordInList(listToFindWordIn, wordToFind);
+        assertFalse(actual);
+    }
+
 }
