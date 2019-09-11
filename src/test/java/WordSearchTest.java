@@ -81,4 +81,16 @@ public class WordSearchTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    public void findWordCoordinatesWhenWordIsVertical(){
+        String wordToFind = "SANDY";
+        int startRowOfWord = 5;
+        int startColOfWord = 2;
+        String direction = "forwardV";
+        String expected = "SANDY: (2,5),(2,6),(2,7),(2,8),(2,9)";
+        String actual = wordSearch.findWordCoordinates(wordToFind, startRowOfWord, startColOfWord, direction);
+
+        assertEquals(expected,actual);
+    }
+
 }

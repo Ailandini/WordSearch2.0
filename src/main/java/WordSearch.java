@@ -28,6 +28,11 @@ public class WordSearch {
                     output.append("(").append(startColOfWord-i).append(",").append(startRowOfWord).append("),");
                 }
                 break;
+            case "forwardV":
+                for(int i=1; i < stringToFind.length(); i++){
+                    output.append("(").append(startColOfWord).append(",").append(startRowOfWord+i).append("),");
+                }
+                break;
         }
 
         return output.toString().substring(0, output.length() - 1);
