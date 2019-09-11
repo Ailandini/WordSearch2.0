@@ -15,7 +15,7 @@ public class WordSearch {
 
     }
 
-    protected String findWordCoordinates(String[] listToFindStringIn, String stringToFind, int startRowOfWord, int startColOfWord, String direction){
+    protected String findWordCoordinates(String stringToFind, int startRowOfWord, int startColOfWord, String direction){
         StringBuilder output = new StringBuilder(stringToFind + ": (" + startColOfWord + "," + startRowOfWord + "),");
         switch(direction){
             case "forwardH":

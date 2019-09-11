@@ -58,40 +58,25 @@ public class WordSearchTest {
     }
 
     @Test
-    public void findWordCoordinatesWhenListIsWord(){
-        String[] listToFindWordIn = new String[]{"C","A","T"};
+    public void findWordCoordinatesWhenIsForward(){
         String wordToFind = "CAT";
         int startRowOfWord  = 0;
         int startColOfWord = 0;
         String direction = "forwardH";
         String expected = "CAT: (0,0),(1,0),(2,0)";
-        String actual = wordSearch.findWordCoordinates(listToFindWordIn, wordToFind, startRowOfWord, startColOfWord, direction);
-
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    public void findWordCoordinatesWhenListHasExtraCharacters(){
-        String[] listToFindWordIn = new String[]{"P","A","D","O","G","R","Q"};
-        String wordToFind = "DOG";
-        int startRowOfWord = 0;
-        int startColOfWord = 2;
-        String direction = "forwardH";
-        String expected = "DOG: (2,0),(3,0),(4,0)";
-        String actual = wordSearch.findWordCoordinates(listToFindWordIn, wordToFind, startRowOfWord, startColOfWord, direction);
+        String actual = wordSearch.findWordCoordinates(wordToFind, startRowOfWord, startColOfWord, direction);
 
         assertEquals(expected, actual);
     }
 
     @Test
     public void findWordCoordinatesWhenWordIsBackwards(){
-        String[] listToFindWordIn = new String[]{"P","G","O","D","G","R","Q"};
         String wordToFind = "DOG";
         int startRowOfWord = 0;
         int startColOfWord = 3;
         String direction = "backwardH";
         String expected = "DOG: (3,0),(2,0),(1,0)";
-        String actual = wordSearch.findWordCoordinates(listToFindWordIn, wordToFind, startRowOfWord, startColOfWord, direction);
+        String actual = wordSearch.findWordCoordinates(wordToFind, startRowOfWord, startColOfWord, direction);
 
         assertEquals(expected, actual);
     }
