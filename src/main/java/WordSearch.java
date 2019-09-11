@@ -2,7 +2,7 @@ import java.util.Arrays;
 
 public class WordSearch {
 
-    public Boolean findWordInList(String[] listToFindString, String stringToFind){
+    protected Boolean findWordInList(String[] listToFindString, String stringToFind){
         String stringOfListToFindString = String.join("",listToFindString);
         StringBuilder mutableListToFindString = new StringBuilder(stringOfListToFindString);
         mutableListToFindString.reverse();
