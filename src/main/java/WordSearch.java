@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class WordSearch {
@@ -57,6 +58,10 @@ public class WordSearch {
         }
 
         return output.toString().substring(0, output.length() - 1);
+    }
+
+    protected String[] getPuzzleRow(ArrayList<ArrayList<String>> wordSearchPuzzle, int puzzleRowToGet){
+        return wordSearchPuzzle.get(puzzleRowToGet).toArray(new String[0]);
     }
 
 }

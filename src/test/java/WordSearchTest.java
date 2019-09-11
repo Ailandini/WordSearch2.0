@@ -1,7 +1,11 @@
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import static junit.framework.TestCase.*;
+import static org.junit.Assert.assertArrayEquals;
 
 public class WordSearchTest {
     private WordSearch wordSearch;
@@ -151,6 +155,18 @@ public class WordSearchTest {
         String actual = wordSearch.findWordCoordinates(wordToFind, startRowOfWord, startColOfWord, direction);
 
         assertEquals(expected,actual);
+    }
+
+    @Test
+    public void getPuzzleRowReturnsRow(){
+        ArrayList<ArrayList<String>> wordSearchPuzzle = new ArrayList<>();
+        ArrayList<String> wordSearchPuzzleFirstRow = new ArrayList<>(Arrays.asList("R","Q","C"));
+        wordSearchPuzzle.add(wordSearchPuzzleFirstRow);
+        int rowToGet = 0;
+        String[] expected = new String[]{"R","Q","C"};
+        String[] actual = wordSearch.getPuzzleRow(wordSearchPuzzle, rowToGet);
+
+        assertArrayEquals(expected, actual);
     }
 
 }
