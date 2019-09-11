@@ -93,4 +93,16 @@ public class WordSearchTest {
         assertEquals(expected,actual);
     }
 
+    @Test
+    public void findWordCoordinatesWhenWordIsBackwardsVertical(){
+        String wordToFind = "SANDY";
+        int startRowOfWord = 4;
+        int startColOfWord = 2;
+        String direction = "backwardV";
+        String expected = "SANDY: (2,4),(2,3),(2,2),(2,1),(2,0)";
+        String actual = wordSearch.findWordCoordinates(wordToFind, startRowOfWord, startColOfWord, direction);
+
+        assertEquals(expected,actual);
+    }
+
 }
