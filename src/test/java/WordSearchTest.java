@@ -57,4 +57,15 @@ public class WordSearchTest {
         assertTrue(actual);
     }
 
+    @Test
+    public void findWordCoordinatesWhenListIsWord(){
+        String[] listToFindWordIn = new String[]{"C","A","T"};
+        int row  = 0;
+        int col = 0;
+        String expected = "CAT: (0,0),(1,0),(2,0)";
+        String actual = wordSearch.findWordCoordinates(listToFindWordIn, "CAT", 0, 0, "forwardH");
+
+        assertEquals(expected, actual);
+    }
+
 }
