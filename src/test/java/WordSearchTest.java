@@ -169,4 +169,38 @@ public class WordSearchTest {
         assertArrayEquals(expected, actual);
     }
 
+    @Test
+    public void getPuzzleRowReturnsRowDesired(){
+        ArrayList<ArrayList<String>> wordSearchPuzzle = new ArrayList<>();
+        ArrayList<String> wordSearchPuzzleFirstRow = new ArrayList<>(Arrays.asList("R","Q","C"));
+        ArrayList<String> wordSearchPuzzleSecondRow = new ArrayList<>(Arrays.asList("P","R","T"));
+        wordSearchPuzzle.add(wordSearchPuzzleFirstRow);
+        wordSearchPuzzle.add(wordSearchPuzzleSecondRow);
+        int rowToGet = 1;
+        String[] expected = new String[]{"P","R","T"};
+        String[] actual = wordSearch.getPuzzleRow(wordSearchPuzzle, rowToGet);
+
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void getPuzzleRowReturnsEmptyWhenNullPuzzleProvided(){
+        ArrayList<ArrayList<String>> wordSearchPuzzle = new ArrayList<>();
+        String[] expected = new String[]{};
+        String[] actual = wordSearch.getPuzzleRow(wordSearchPuzzle, 0);
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void getPuzzleRowReturnsEmptyWhenIndexOutOfBounds(){
+        ArrayList<ArrayList<String>> wordSearchPuzzle = new ArrayList<>();
+        ArrayList<String> wordSearchPuzzleFirstRow = new ArrayList<>(Arrays.asList("R","Q","C"));
+        wordSearchPuzzle.add(wordSearchPuzzleFirstRow);
+        String[] expected = new String[]{};
+        String[] actualTooLarge = wordSearch.getPuzzleRow(wordSearchPuzzle, 4);
+        String[] actualTooSmall = wordSearch.getPuzzleRow(wordSearchPuzzle, -1);
+        assertArrayEquals(expected, actualTooLarge);
+        assertArrayEquals(expected, actualTooSmall);
+    }
+
 }

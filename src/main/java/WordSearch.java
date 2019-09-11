@@ -61,6 +61,9 @@ public class WordSearch {
     }
 
     protected String[] getPuzzleRow(ArrayList<ArrayList<String>> wordSearchPuzzle, int puzzleRowToGet){
+        if(wordSearchPuzzle.size() == 0 || puzzleRowToGet > wordSearchPuzzle.size() || puzzleRowToGet < 0){
+            return new String[]{};
+        }
         return wordSearchPuzzle.get(puzzleRowToGet).toArray(new String[0]);
     }
 
