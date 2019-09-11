@@ -84,8 +84,15 @@ public class WordSearch {
             return new String[]{};
         }
         ArrayList<String> outputDiagonalToGet = new ArrayList<>();
-        for(int i=0; i < wordSearchPuzzle.size(); i++){
-            outputDiagonalToGet.add(wordSearchPuzzle.get(i).get(i));
+        if(direction.equals("HL")) {
+            for (int i = 0; i < wordSearchPuzzle.size(); i++) {
+                outputDiagonalToGet.add(wordSearchPuzzle.get(i).get(i));
+            }
+        }
+        else if(direction.equals("LH")){
+            for (int i = 0; i < wordSearchPuzzle.size(); i++) {
+                outputDiagonalToGet.add(wordSearchPuzzle.get(diagToGetRow - i).get(diagToGetCol+i));
+            }
         }
         return outputDiagonalToGet.toArray(new String[0]);
     }
