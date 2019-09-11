@@ -105,4 +105,52 @@ public class WordSearchTest {
         assertEquals(expected,actual);
     }
 
+    @Test
+    public void findWordCoordinatesWhenWordIsDiagonalLowHigh(){
+        String wordToFind = "BANANA";
+        int startRowOfWord = 7;
+        int startColOfWord = 1;
+        String direction = "forwardDLH";
+        String expected = "BANANA: (1,7),(2,6),(3,5),(4,4),(5,3),(6,2)";
+        String actual = wordSearch.findWordCoordinates(wordToFind, startRowOfWord, startColOfWord, direction);
+
+        assertEquals(expected,actual);
+    }
+
+    @Test
+    public void findWordCoordinatesWhenWordIsBackwardsDiagonalLowHigh(){
+        String wordToFind = "PEACH";
+        int startRowOfWord = 4;
+        int startColOfWord = 6;
+        String direction = "backwardDLH";
+        String expected = "PEACH: (6,4),(5,5),(4,6),(3,7),(2,8)";
+        String actual = wordSearch.findWordCoordinates(wordToFind, startRowOfWord, startColOfWord, direction);
+
+        assertEquals(expected,actual);
+    }
+
+    @Test
+    public void findWordCoordinatesWhenWordIsDiagonalHighLow(){
+        String wordToFind = "PULP";
+        int startRowOfWord = 1;
+        int startColOfWord = 1;
+        String direction = "forwardDHL";
+        String expected = "PULP: (1,1),(2,2),(3,3),(4,4)";
+        String actual = wordSearch.findWordCoordinates(wordToFind, startRowOfWord, startColOfWord, direction);
+
+        assertEquals(expected,actual);
+    }
+
+    @Test
+    public void findWordCoordinatesWhenWordIsBackwardsDiagonalHighLow(){
+        String wordToFind = "PURPLE";
+        int startRowOfWord = 6;
+        int startColOfWord = 7;
+        String direction = "backwardDHL";
+        String expected = "PURPLE: (7,6),(6,5),(5,4),(4,3),(3,2),(2,1)";
+        String actual = wordSearch.findWordCoordinates(wordToFind, startRowOfWord, startColOfWord, direction);
+
+        assertEquals(expected,actual);
+    }
+
 }

@@ -38,6 +38,28 @@ public class WordSearch {
                     output.append("(").append(startColOfWord).append(",").append(startRowOfWord-i).append("),");
                 }
                 break;
+            case "forwardDLH":
+                for(int i=1; i < stringToFind.length(); i++){
+                    output.append("(").append(startColOfWord+i).append(",").append(startRowOfWord-i).append("),");
+                }
+                break;
+            case "backwardDLH":
+                for(int i=1; i < stringToFind.length(); i++){
+                    output.append("(").append(startColOfWord-i).append(",").append(startRowOfWord+i).append("),");
+                }
+                break;
+            case "forwardDHL":
+                for(int i=1; i < stringToFind.length(); i++){
+                    output.append("(").append(startColOfWord+i).append(",").append(startRowOfWord+i).append("),");
+                }
+                break;
+            case "backwardDHL":
+                for(int i=1; i < stringToFind.length(); i++){
+                    output.append("(").append(startColOfWord-i).append(",").append(startRowOfWord-i).append("),");
+                }
+                break;
+            default:
+                return "Direction Provided is Invalid.";
         }
 
         return output.toString().substring(0, output.length() - 1);
