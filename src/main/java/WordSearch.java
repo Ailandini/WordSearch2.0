@@ -78,4 +78,15 @@ public class WordSearch {
         return outputColumnToGet;
     }
 
+    protected String[] getPuzzleDiagonal(ArrayList<ArrayList<String>> wordSearchPuzzle, int diagToGetCol, int diagToGetRow, String direction ){
+        if(wordSearchPuzzle.size() == 0 || diagToGetCol > wordSearchPuzzle.size() || diagToGetCol < 0
+        || diagToGetRow > wordSearchPuzzle.size() || diagToGetRow < 0){
+            return new String[]{};
+        }
+        ArrayList<String> outputDiagonalToGet = new ArrayList<>();
+        for(int i=0; i < wordSearchPuzzle.size(); i++){
+            outputDiagonalToGet.add(wordSearchPuzzle.get(i).get(i));
+        }
+        return outputDiagonalToGet.toArray(new String[0]);
+    }
 }

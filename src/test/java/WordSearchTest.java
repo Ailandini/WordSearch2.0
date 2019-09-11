@@ -217,4 +217,20 @@ public class WordSearchTest {
         assertArrayEquals(expected, actual);
     }
 
+    @Test
+    public void getDiagonalHighLowReturnsDiagonalFromHighToLowFromPuzzleEdge(){
+        ArrayList<ArrayList<String>> wordSearchPuzzle = new ArrayList<>();
+        ArrayList<String> wordSearchPuzzleFirstRow = new ArrayList<>(Arrays.asList("R","Q"));
+        ArrayList<String> wordSearchPuzzleSecondRow = new ArrayList<>(Arrays.asList("P","R"));
+        wordSearchPuzzle.add(wordSearchPuzzleFirstRow);
+        wordSearchPuzzle.add(wordSearchPuzzleSecondRow);
+        int diagToGetCol = 0;
+        int diagToGetRow = 0;
+        String direction = "HL";
+        String[] expected = new String[]{"R","R"};
+        String[] actual = wordSearch.getPuzzleDiagonal(wordSearchPuzzle, diagToGetCol, diagToGetRow, direction);
+
+        assertArrayEquals(expected, actual);
+    }
+
 }
