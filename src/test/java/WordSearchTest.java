@@ -203,4 +203,18 @@ public class WordSearchTest {
         assertArrayEquals(expected, actualTooSmall);
     }
 
+    @Test
+    public void getPuzzleColReturnsCol(){
+        ArrayList<ArrayList<String>> wordSearchPuzzle = new ArrayList<>();
+        ArrayList<String> wordSearchPuzzleFirstRow = new ArrayList<>(Arrays.asList("R","Q"));
+        ArrayList<String> wordSearchPuzzleSecondRow = new ArrayList<>(Arrays.asList("P","R"));
+        wordSearchPuzzle.add(wordSearchPuzzleFirstRow);
+        wordSearchPuzzle.add(wordSearchPuzzleSecondRow);
+        int colToGet = 0;
+        String[] expected = new String[]{"R","P"};
+        String[] actual = wordSearch.getPuzzleCol(wordSearchPuzzle, colToGet);
+
+        assertArrayEquals(expected, actual);
+    }
+
 }

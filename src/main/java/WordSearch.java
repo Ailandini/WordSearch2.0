@@ -60,11 +60,22 @@ public class WordSearch {
         return output.toString().substring(0, output.length() - 1);
     }
 
-    protected String[] getPuzzleRow(ArrayList<ArrayList<String>> wordSearchPuzzle, int puzzleRowToGet){
-        if(wordSearchPuzzle.size() == 0 || puzzleRowToGet > wordSearchPuzzle.size() || puzzleRowToGet < 0){
+    protected String[] getPuzzleRow(ArrayList<ArrayList<String>> wordSearchPuzzle, int rowToGet){
+        if(wordSearchPuzzle.size() == 0 || rowToGet > wordSearchPuzzle.size() || rowToGet < 0){
             return new String[]{};
         }
-        return wordSearchPuzzle.get(puzzleRowToGet).toArray(new String[0]);
+        return wordSearchPuzzle.get(rowToGet).toArray(new String[0]);
+    }
+
+    protected String[] getPuzzleCol(ArrayList<ArrayList<String>> wordSearchPuzzle, int colToGet){
+        if(wordSearchPuzzle.size() == 0 || colToGet > wordSearchPuzzle.size() || colToGet < 0){
+            return new String[]{};
+        }
+        String[] outputColumnToGet = new String[wordSearchPuzzle.size()];
+        for(int i=0; i < wordSearchPuzzle.size(); i++){
+            outputColumnToGet[i] = wordSearchPuzzle.get(i).get(colToGet);
+        }
+        return outputColumnToGet;
     }
 
 }
