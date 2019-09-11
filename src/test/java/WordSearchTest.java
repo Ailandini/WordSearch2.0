@@ -74,11 +74,24 @@ public class WordSearchTest {
     public void findWordCoordinatesWhenListHasExtraCharacters(){
         String[] listToFindWordIn = new String[]{"P","A","D","O","G","R","Q"};
         String wordToFind = "DOG";
-        int startRow = 0;
-        int startCol = 2;
+        int startRowOfWord = 0;
+        int startColOfWord = 2;
         String direction = "forwardH";
         String expected = "DOG: (2,0),(3,0),(4,0)";
-        String actual = wordSearch.findWordCoordinates(listToFindWordIn, wordToFind, startRow, startCol, "forwardH");
+        String actual = wordSearch.findWordCoordinates(listToFindWordIn, wordToFind, startRowOfWord, startColOfWord, direction);
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void findWordCoordinatesWhenWordIsBackwards(){
+        String[] listToFindWordIn = new String[]{"P","G","O","D","G","R","Q"};
+        String wordToFind = "DOG";
+        int startRowOfWord = 0;
+        int startColOfWord = 3;
+        String direction = "backwardH";
+        String expected = "DOG: (3,0),(2,0),(1,0)";
+        String actual = wordSearch.findWordCoordinates(listToFindWordIn, wordToFind, startRowOfWord, startColOfWord, direction);
 
         assertEquals(expected, actual);
     }
