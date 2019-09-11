@@ -17,49 +17,43 @@ public class WordSearch {
 
     protected String findWordCoordinates(String stringToFind, int startRowOfWord, int startColOfWord, String direction){
         StringBuilder output = new StringBuilder(stringToFind + ": (" + startColOfWord + "," + startRowOfWord + "),");
+        int rowAdjustment = 0;
+        int colAdjustment = 0;
         switch(direction){
             case "forwardH":
-                for(int i=1; i < stringToFind.length(); i++){
-                    output.append("(").append(startColOfWord+i).append(",").append(startRowOfWord).append("),");
-                }
+                colAdjustment = 1;
                 break;
             case "backwardH":
-                for(int i=1; i < stringToFind.length(); i++){
-                    output.append("(").append(startColOfWord-i).append(",").append(startRowOfWord).append("),");
-                }
+                colAdjustment = -1;
                 break;
             case "forwardV":
-                for(int i=1; i < stringToFind.length(); i++){
-                    output.append("(").append(startColOfWord).append(",").append(startRowOfWord+i).append("),");
-                }
+                rowAdjustment = 1;
                 break;
             case "backwardV":
-                for(int i=1; i < stringToFind.length(); i++){
-                    output.append("(").append(startColOfWord).append(",").append(startRowOfWord-i).append("),");
-                }
+                rowAdjustment = -1;
                 break;
             case "forwardDLH":
-                for(int i=1; i < stringToFind.length(); i++){
-                    output.append("(").append(startColOfWord+i).append(",").append(startRowOfWord-i).append("),");
-                }
+                colAdjustment = 1;
+                rowAdjustment = -1;
                 break;
             case "backwardDLH":
-                for(int i=1; i < stringToFind.length(); i++){
-                    output.append("(").append(startColOfWord-i).append(",").append(startRowOfWord+i).append("),");
-                }
+                colAdjustment = -1;
+                rowAdjustment = 1;
                 break;
             case "forwardDHL":
-                for(int i=1; i < stringToFind.length(); i++){
-                    output.append("(").append(startColOfWord+i).append(",").append(startRowOfWord+i).append("),");
-                }
+                colAdjustment = 1;
+                rowAdjustment = 1;
                 break;
             case "backwardDHL":
-                for(int i=1; i < stringToFind.length(); i++){
-                    output.append("(").append(startColOfWord-i).append(",").append(startRowOfWord-i).append("),");
-                }
+                colAdjustment = -1;
+                rowAdjustment = -1;
                 break;
             default:
                 return "Direction Provided is Invalid.";
+        }
+
+        for(int i=1; i < stringToFind.length(); i++){
+            output.append("(").append(startColOfWord+(colAdjustment*i)).append(",").append(startRowOfWord+(rowAdjustment*i)).append("),");
         }
 
         return output.toString().substring(0, output.length() - 1);
