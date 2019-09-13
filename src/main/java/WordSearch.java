@@ -1,14 +1,24 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class WordSearch {
     private String[] wordsToFind;
+    private ArrayList<ArrayList<String>> wordSearchPuzzle = new ArrayList<>();
 
     WordSearch(String puzzleFilePath){
         try {
             BufferedReader bufferedReader = new BufferedReader(new FileReader(puzzleFilePath));
             wordsToFind = bufferedReader.readLine().split(",");
+            String nextLine = bufferedReader.readLine();
+            ArrayList<String> puzzleRow;
+            while(nextLine != null){
+                puzzleRow = new ArrayList<>(Arrays.asList(nextLine.split(",")));
+                wordSearchPuzzle.add(puzzleRow);
+
+                nextLine = bufferedReader.readLine();
+            }
         }
         catch(Exception e){
             System.out.println("Puzzle at path: " + puzzleFilePath + " does not exist.");
@@ -17,6 +27,18 @@ public class WordSearch {
 
     public String[] getWordsToFind(){
         return wordsToFind;
+    }
+
+    public String printWordSearchPuzzle(){
+        StringBuilder outputWordSearchPuzzle = new StringBuilder();
+        for(int i=0 ; i < wordSearchPuzzle.size(); i++){
+            for(int j=0; j < wordSearchPuzzle.size(); j++){
+                outputWordSearchPuzzle.append(wordSearchPuzzle.get(i).get(j)).append(" ");
+            }
+            outputWordSearchPuzzle.replace(outputWordSearchPuzzle.length() - 1, outputWordSearchPuzzle.length(), "\n");
+        }
+
+        return outputWordSearchPuzzle.toString().substring(1, outputWordSearchPuzzle.length() -1);
     }
 
     protected Boolean findWordInList(String[] listToFindString, String stringToFind){
