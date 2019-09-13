@@ -33,19 +33,19 @@ public class WordSearch {
             case "backwardV":
                 rowAdjustment = -1;
                 break;
-            case "forwardDLH":
+            case "forwardDBT":
                 colAdjustment = 1;
                 rowAdjustment = -1;
                 break;
-            case "backwardDLH":
+            case "backwardDBT":
                 colAdjustment = -1;
                 rowAdjustment = 1;
                 break;
-            case "forwardDHL":
+            case "forwardDTB":
                 colAdjustment = 1;
                 rowAdjustment = 1;
                 break;
-            case "backwardDHL":
+            case "backwardDTB":
                 colAdjustment = -1;
                 rowAdjustment = -1;
                 break;
@@ -84,13 +84,16 @@ public class WordSearch {
             return new String[]{};
         }
         ArrayList<String> outputDiagonalToGet = new ArrayList<>();
-        if(direction.equals("HL")) {
+        if(direction.equals("TB")) {
             for (int i = 0; i < wordSearchPuzzle.size(); i++) {
                 outputDiagonalToGet.add(wordSearchPuzzle.get(i).get(i));
             }
         }
-        else if(direction.equals("LH")){
+        else if(direction.equals("BT")){
             for (int i = 0; i < wordSearchPuzzle.size(); i++) {
+                if(diagToGetRow - i < 0 || diagToGetCol + i > wordSearchPuzzle.size()){
+                    break;
+                }
                 outputDiagonalToGet.add(wordSearchPuzzle.get(diagToGetRow - i).get(diagToGetCol+i));
             }
         }
