@@ -12,7 +12,7 @@ public class WordSearchTest {
 
     @Before
     public void setup(){
-        wordSearch = new WordSearch();
+        wordSearch = new WordSearch("Inputs/WordSearchTestPuzzle1");
     }
 
     @Test
@@ -322,4 +322,11 @@ public class WordSearchTest {
         assertArrayEquals(expected, actual);
     }
 
+    @Test
+    public void getWordsToFind(){
+        String[] expected = new String[]{"CAT", "HAT", "DOG", "RAT"};
+        String[] actual = wordSearch.getWordsToFind();
+
+        assertArrayEquals(expected, actual);
+    }
 }

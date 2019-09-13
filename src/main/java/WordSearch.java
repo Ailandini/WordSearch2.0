@@ -1,6 +1,23 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.util.ArrayList;
 
 public class WordSearch {
+    private String[] wordsToFind;
+
+    WordSearch(String puzzleFilePath){
+        try {
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(puzzleFilePath));
+            wordsToFind = bufferedReader.readLine().split(",");
+        }
+        catch(Exception e){
+            System.out.println("Puzzle at path: " + puzzleFilePath + " does not exist.");
+        }
+    }
+
+    public String[] getWordsToFind(){
+        return wordsToFind;
+    }
 
     protected Boolean findWordInList(String[] listToFindString, String stringToFind){
         String stringOfListToFindString = String.join("",listToFindString);
