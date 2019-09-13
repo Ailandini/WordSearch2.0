@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class WordSearch {
 
@@ -86,15 +85,18 @@ public class WordSearch {
         ArrayList<String> outputDiagonalToGet = new ArrayList<>();
         if(direction.equals("TB")) {
             for (int i = 0; i < wordSearchPuzzle.size(); i++) {
-                outputDiagonalToGet.add(wordSearchPuzzle.get(i).get(i));
+                if(diagToGetCol + i >= wordSearchPuzzle.size() || diagToGetRow + i >= wordSearchPuzzle.size()){
+                    break;
+                }
+                outputDiagonalToGet.add(wordSearchPuzzle.get(diagToGetRow + i).get(diagToGetCol + i));
             }
         }
         else if(direction.equals("BT")){
             for (int i = 0; i < wordSearchPuzzle.size(); i++) {
-                if(diagToGetRow - i < 0 || diagToGetCol + i > wordSearchPuzzle.size()){
+                if(diagToGetRow - i < 0 || diagToGetCol + i >= wordSearchPuzzle.size()){
                     break;
                 }
-                outputDiagonalToGet.add(wordSearchPuzzle.get(diagToGetRow - i).get(diagToGetCol+i));
+                outputDiagonalToGet.add(wordSearchPuzzle.get(diagToGetRow - i).get(diagToGetCol + i));
             }
         }
         return outputDiagonalToGet.toArray(new String[0]);
