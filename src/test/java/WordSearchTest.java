@@ -330,15 +330,18 @@ public class WordSearchTest {
         assertArrayEquals(expected, actual);
     }
 
+    @Test
     public void printWordSearchPuzzle(){
-        String expected = "S T T F R C \n" +
-                "A U A A N D \n" +
-                "E B T H A E \n" +
-                "S O C I M C \n" +
-                "W V P M P A \n" +
-                "S V G O D T ";
+        String expected = "S T T F R C\n" +
+                "A U A A N D\n" +
+                "E B T H A E\n" +
+                "S O C I M C\n" +
+                "W V P M P A\n" +
+                "S V G O D T";
         String actual = wordSearch.printWordSearchPuzzle();
 
         assertEquals(expected, actual);
     }
+
+
 }

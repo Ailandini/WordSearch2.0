@@ -38,7 +38,7 @@ public class WordSearch {
             outputWordSearchPuzzle.replace(outputWordSearchPuzzle.length() - 1, outputWordSearchPuzzle.length(), "\n");
         }
 
-        return outputWordSearchPuzzle.toString().substring(1, outputWordSearchPuzzle.length() -1);
+        return outputWordSearchPuzzle.toString().substring(0, outputWordSearchPuzzle.length() -1);
     }
 
     protected Boolean findWordInList(String[] listToFindString, String stringToFind){
