@@ -82,21 +82,42 @@ public class WordSearch {
         || diagToGetRow > wordSearchPuzzle.size() || diagToGetRow < 0){
             return new String[]{};
         }
+        int adjustedDiagToGetCol = 0;
+        int adjustedDiagToGetRow = 0;
         ArrayList<String> outputDiagonalToGet = new ArrayList<>();
         if(direction.equals("TB")) {
+            if(diagToGetRow > diagToGetCol){
+                adjustedDiagToGetRow = diagToGetRow - diagToGetCol;
+            }
+            else {
+                adjustedDiagToGetCol = diagToGetCol - diagToGetRow;
+            }
             for (int i = 0; i < wordSearchPuzzle.size(); i++) {
-                if(diagToGetCol + i >= wordSearchPuzzle.size() || diagToGetRow + i >= wordSearchPuzzle.size()){
+                if(adjustedDiagToGetCol + i >= wordSearchPuzzle.size() || adjustedDiagToGetRow + i >= wordSearchPuzzle.size()){
                     break;
                 }
-                outputDiagonalToGet.add(wordSearchPuzzle.get(diagToGetRow + i).get(diagToGetCol + i));
+                outputDiagonalToGet.add(wordSearchPuzzle.get(adjustedDiagToGetRow + i).get(adjustedDiagToGetCol + i));
             }
         }
         else if(direction.equals("BT")){
+            if(diagToGetCol > diagToGetRow){
+                    adjustedDiagToGetCol = diagToGetRow + diagToGetCol;
+            }
+            else {
+
+                if(diagToGetRow + diagToGetCol < wordSearchPuzzle.size()) {
+                    adjustedDiagToGetRow = diagToGetCol + diagToGetRow;
+                }
+                else{
+                    adjustedDiagToGetCol = diagToGetCol;
+                    adjustedDiagToGetRow = diagToGetRow;
+                }
+            }
             for (int i = 0; i < wordSearchPuzzle.size(); i++) {
-                if(diagToGetRow - i < 0 || diagToGetCol + i >= wordSearchPuzzle.size()){
+                if(adjustedDiagToGetRow - i < 0 || adjustedDiagToGetCol + i >= wordSearchPuzzle.size()){
                     break;
                 }
-                outputDiagonalToGet.add(wordSearchPuzzle.get(diagToGetRow - i).get(diagToGetCol + i));
+                outputDiagonalToGet.add(wordSearchPuzzle.get(adjustedDiagToGetRow - i).get(adjustedDiagToGetCol + i));
             }
         }
         return outputDiagonalToGet.toArray(new String[0]);

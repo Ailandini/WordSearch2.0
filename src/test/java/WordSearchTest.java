@@ -269,7 +269,7 @@ public class WordSearchTest {
     }
 
     @Test
-    public void getPuzzleDiagonalTopToBottomFromNonEdge(){
+    public void getPuzzleDiagonalTopToBottomFromNonCenterEdge(){
         ArrayList<ArrayList<String>> wordSearchPuzzle = new ArrayList<ArrayList<String>>(){
             {
                 add(new ArrayList<>(Arrays.asList("R","Q","Z")));
@@ -281,6 +281,42 @@ public class WordSearchTest {
         int diagToGetRow = 1;
         String direction = "TB";
         String[] expected = new String[]{"P", "V"};
+        String[] actual = wordSearch.getPuzzleDiagonal(wordSearchPuzzle, diagToGetCol, diagToGetRow, direction);
+
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void getPuzzleDiagonalTopToBottomFromNonEdge(){
+        ArrayList<ArrayList<String>> wordSearchPuzzle = new ArrayList<ArrayList<String>>(){
+            {
+                add(new ArrayList<>(Arrays.asList("R","Q","Z")));
+                add(new ArrayList<>(Arrays.asList("P","R","S")));
+                add(new ArrayList<>(Arrays.asList("T","V","X")));
+            }
+        };
+        int diagToGetCol = 1;
+        int diagToGetRow = 0;
+        String direction = "TB";
+        String[] expected = new String[]{"Q","S"};
+        String[] actual = wordSearch.getPuzzleDiagonal(wordSearchPuzzle, diagToGetCol, diagToGetRow, direction);
+
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void getPuzzleDiagonalBottomToTopFromNonEdge(){
+        ArrayList<ArrayList<String>> wordSearchPuzzle = new ArrayList<ArrayList<String>>(){
+            {
+                add(new ArrayList<>(Arrays.asList("R","Q","Z")));
+                add(new ArrayList<>(Arrays.asList("P","R","S")));
+                add(new ArrayList<>(Arrays.asList("T","V","X")));
+            }
+        };
+        int diagToGetCol = 2;
+        int diagToGetRow = 2;
+        String direction = "BT";
+        String[] expected = new String[]{"X"};
         String[] actual = wordSearch.getPuzzleDiagonal(wordSearchPuzzle, diagToGetCol, diagToGetRow, direction);
 
         assertArrayEquals(expected, actual);
