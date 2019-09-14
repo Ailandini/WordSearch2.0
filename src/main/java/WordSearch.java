@@ -41,24 +41,17 @@ public class WordSearch {
         return outputWordSearchPuzzle.toString().substring(0, outputWordSearchPuzzle.length() -1);
     }
 
-    protected int findWordInList(String[] listToFindString, String stringToFind){
+    protected Boolean findWordInList(String[] listToFindString, String stringToFind){
         String stringOfListToFindString = String.join("",listToFindString);
         StringBuilder mutableListToFindString = new StringBuilder(stringOfListToFindString);
         mutableListToFindString.reverse();
         String reverseStringOfListToFindString = mutableListToFindString.toString();
 
         if(stringToFind.length() == 0){
-            return -1;
+            return false;
         }
-        if(stringOfListToFindString.contains(stringToFind)){
-            return stringOfListToFindString.indexOf(stringToFind);
-        }
-        else if (reverseStringOfListToFindString.contains(stringToFind)){
-            return (reverseStringOfListToFindString.length() - 1) - reverseStringOfListToFindString.indexOf(stringToFind);
-        }
-        else {
-            return -1;
-        }
+        return(stringOfListToFindString.contains(stringToFind) || reverseStringOfListToFindString.contains(stringToFind));
+
     }
 
     protected String findWordCoordinates(String stringToFind, int startRowOfWord, int startColOfWord, String direction){
