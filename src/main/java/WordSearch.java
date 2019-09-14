@@ -175,5 +175,16 @@ public class WordSearch {
         return true;
     }
 
+    protected String checkAllWordsAgainstList(String[] remainingWordsToCheckFor, ArrayList<String> rowToCheck){
+        String[] rowToCheckArray = rowToCheck.toArray(new String[0]);
+        StringBuilder wordsFoundInList = new StringBuilder();
+        for(String word : remainingWordsToCheckFor){
+            if(findWordInList(rowToCheckArray, word)){
+                wordsFoundInList.append(word).append('\n');
+            }
+        }
+
+        return wordsFoundInList.toString().substring(0, wordsFoundInList.length()-1);
+    }
 
 }

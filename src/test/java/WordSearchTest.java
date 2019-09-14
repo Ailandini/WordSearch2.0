@@ -377,5 +377,33 @@ public class WordSearchTest {
         assertTrue(wordSearch.validatePuzzle(wordSearchPuzzle));
     }
 
+    @Test
+    public void checkAllWordsAgainstList(){
+        String[] wordsToLookFor = wordSearch.getWordsToFind();
+        ArrayList<String> rowToCheck = new ArrayList<>(Arrays.asList("X","Y","D","O","G","Y"));
+        String expected = "DOG";
+        String actual = wordSearch.checkAllWordsAgainstList(wordsToLookFor, rowToCheck);
 
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void checkAllWordsAgainstListBackwards(){
+        String[] wordsToLookFor = wordSearch.getWordsToFind();
+        ArrayList<String> rowToCheck = new ArrayList<>(Arrays.asList("X","Y","G","O","D","Y"));
+        String expected = "DOG";
+        String actual = wordSearch.checkAllWordsAgainstList(wordsToLookFor, rowToCheck);
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void checkAllWordsAgainstListMultipleInList(){
+        String[] wordsToLookFor = wordSearch.getWordsToFind();
+        ArrayList<String> rowToCheck = new ArrayList<>(Arrays.asList("X","Y","G","O","D","C","A","T"));
+        String expected = "CAT\nDOG";
+        String actual = wordSearch.checkAllWordsAgainstList(wordsToLookFor, rowToCheck);
+
+        assertEquals(expected, actual);
+    }
 }
