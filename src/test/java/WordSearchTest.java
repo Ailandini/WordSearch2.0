@@ -18,47 +18,47 @@ public class WordSearchTest {
     @Test
     public void findWordInListCanFindItself(){
         String[] listToFindWordIn = new String[]{"C","A","T"};
-        Boolean actual = wordSearch.findWordInList(listToFindWordIn, "CAT");
-        assertTrue(actual);
+        int actual = wordSearch.findWordInList(listToFindWordIn, "CAT");
+        assert(actual == 0);
     }
 
     @Test
     public void findWordInListWordIsNotInProvidedList(){
         String[] listToFindWordIn = new String[]{"C","A","T"};
-        Boolean actual = wordSearch.findWordInList(listToFindWordIn, "DOG");
-        assertFalse(actual);
+        int actual = wordSearch.findWordInList(listToFindWordIn, "DOG");
+        assert(actual == -1);
     }
 
     @Test
     public void findWordInListContainsExtraCharacters(){
         String[] listToFindWordIn = new String[]{"Z","X","C","A","T","R","Q"};
-        Boolean actual = wordSearch.findWordInList(listToFindWordIn, "CAT");
-        assertTrue(actual);
+        int actual = wordSearch.findWordInList(listToFindWordIn, "CAT");
+        assert(actual == 2);
     }
 
     @Test
     public void findWordInListNullInput(){
         String[] listToFindWordIn = new String[]{"Z","X","C","A","T","R","Q"};
-        Boolean actualNullList = wordSearch.findWordInList(new String[]{}, "CAT");
-        Boolean actualEmptyWord = wordSearch.findWordInList(listToFindWordIn, "");
-        assertFalse(actualNullList);
-        assertFalse(actualEmptyWord);
+        int actualNullList = wordSearch.findWordInList(new String[]{}, "CAT");
+        int actualEmptyWord = wordSearch.findWordInList(listToFindWordIn, "");
+        assert(actualNullList == -1);
+        assert(actualEmptyWord == -1);
     }
 
     @Test
     public void findWordInListWordExceedsLength(){
         String[] listToFindWordIn = new String[]{"Z","X","C","A","T","R","Q"};
         String wordToFind = "LENGTHIER";
-        Boolean actual = wordSearch.findWordInList(listToFindWordIn, wordToFind);
-        assertFalse(actual);
+        int actual = wordSearch.findWordInList(listToFindWordIn, wordToFind);
+        assert(actual == -1);
     }
 
     @Test
     public void findWordInListBackwards(){
         String[] listToFindWordIn = new String[]{"Z","X","T","A","C","R","Q"};
         String wordToFind = "CAT";
-        Boolean actual = wordSearch.findWordInList(listToFindWordIn, wordToFind);
-        assertTrue(actual);
+        int actual = wordSearch.findWordInList(listToFindWordIn, wordToFind);
+        assert(actual == 4);
     }
 
     @Test
