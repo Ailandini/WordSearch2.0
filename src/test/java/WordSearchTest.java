@@ -351,5 +351,21 @@ public class WordSearchTest {
         assertFalse(actual);
     }
 
+    @Test
+    public void validatePuzzleWhenImproperTypes(){
+        ArrayList<ArrayList<String>> singleRowWordSearch = new ArrayList<ArrayList<String>>(){{
+            add(new ArrayList<>(Arrays.asList("X","Y","Z")));
+        }};
+        ArrayList<ArrayList<String>> rectangularWordSearch = new ArrayList<ArrayList<String>>(){
+            {
+                add(new ArrayList<>(Arrays.asList("X","Y","Z")));
+                add(new ArrayList<>(Arrays.asList("X","Y","Z")));
+            }
+        };
+
+        assertFalse(wordSearch.validatePuzzle(singleRowWordSearch));
+        assertFalse(wordSearch.validatePuzzle(rectangularWordSearch));
+    }
+
 
 }
