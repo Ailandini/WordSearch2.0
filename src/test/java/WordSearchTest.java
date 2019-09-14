@@ -356,15 +356,25 @@ public class WordSearchTest {
         ArrayList<ArrayList<String>> singleRowWordSearch = new ArrayList<ArrayList<String>>(){{
             add(new ArrayList<>(Arrays.asList("X","Y","Z")));
         }};
-        ArrayList<ArrayList<String>> rectangularWordSearch = new ArrayList<ArrayList<String>>(){
-            {
+        ArrayList<ArrayList<String>> rectangularWordSearch = new ArrayList<ArrayList<String>>(){{
                 add(new ArrayList<>(Arrays.asList("X","Y","Z")));
                 add(new ArrayList<>(Arrays.asList("X","Y","Z")));
-            }
-        };
+            }};
 
         assertFalse(wordSearch.validatePuzzle(singleRowWordSearch));
         assertFalse(wordSearch.validatePuzzle(rectangularWordSearch));
+    }
+
+    @Test
+    public void validatePuzzleWhenProperTypes(){
+        ArrayList<ArrayList<String>> wordSearchPuzzle = new ArrayList<ArrayList<String>>(){
+            {
+                add(new ArrayList<>(Arrays.asList("R","Q")));
+                add(new ArrayList<>(Arrays.asList("P","R")));
+            }
+        };
+
+        assertTrue(wordSearch.validatePuzzle(wordSearchPuzzle));
     }
 
 

@@ -166,8 +166,13 @@ public class WordSearch {
         if(puzzle.size() == 0){
             return false;
         }
+        for(ArrayList<String> row : puzzle){
+            if(row.size() != puzzle.size()){
+                return false;
+            }
+        }
 
-        return false;
+        return true;
     }
 
 
