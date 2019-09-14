@@ -343,5 +343,13 @@ public class WordSearchTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    public void validatePuzzleWhenNull(){
+        ArrayList<ArrayList<String>> emptyWordSearchPuzzle = new ArrayList<>();
+        Boolean actual = wordSearch.validatePuzzle(emptyWordSearchPuzzle);
+
+        assertFalse(actual);
+    }
+
 
 }

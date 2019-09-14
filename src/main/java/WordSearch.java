@@ -161,4 +161,14 @@ public class WordSearch {
         }
         return outputDiagonalToGet.toArray(new String[0]);
     }
+
+    protected Boolean validatePuzzle(ArrayList<ArrayList<String>> puzzle){
+        if(puzzle.size() == 0){
+            return false;
+        }
+
+        return false;
+    }
+
+
 }
