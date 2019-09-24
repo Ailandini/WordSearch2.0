@@ -41,16 +41,25 @@ public class WordSearch {
         return outputWordSearchPuzzle.toString().substring(0, outputWordSearchPuzzle.length() -1);
     }
 
-    protected Boolean findWordInList(String[] listToFindString, String stringToFind){
-        String stringOfListToFindString = String.join("",listToFindString);
-        StringBuilder mutableListToFindString = new StringBuilder(stringOfListToFindString);
-        mutableListToFindString.reverse();
-        String reverseStringOfListToFindString = mutableListToFindString.toString();
-
+    protected int findWordInList(String[] listToFindString, String stringToFind, Boolean isBackward){
         if(stringToFind.length() == 0){
-            return false;
+            return -1;
         }
-        return(stringOfListToFindString.contains(stringToFind) || reverseStringOfListToFindString.contains(stringToFind));
+        String stringOfListToFindString = String.join("",listToFindString);
+
+        if(isBackward){
+            StringBuilder mutableListToFindString = new StringBuilder(stringOfListToFindString);
+            mutableListToFindString.reverse();
+            String reverseStringOfListToFindString = mutableListToFindString.toString();
+            int reverseIndex = (listToFindString.length - 1) - reverseStringOfListToFindString.indexOf(stringToFind);
+            if(reverseIndex < listToFindString.length){
+                return reverseIndex;
+            }
+            return -1;
+        }
+        else {
+            return stringOfListToFindString.indexOf(stringToFind);
+        }
 
     }
 
@@ -179,7 +188,7 @@ public class WordSearch {
         String[] rowToCheckArray = rowToCheck.toArray(new String[0]);
         StringBuilder wordsFoundInList = new StringBuilder();
         for(String word : remainingWordsToCheckFor){
-            if(findWordInList(rowToCheckArray, word)){
+            if(findWordInList(rowToCheckArray, word, true) > -1 || findWordInList(rowToCheckArray, word, false) > -1){
                 wordsFoundInList.append(word).append('\n');
             }
         }
